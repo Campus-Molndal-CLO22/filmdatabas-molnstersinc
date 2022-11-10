@@ -6,6 +6,8 @@
     using System.Text;
     using System.Threading.Tasks;
     using MovieDatabase;
+    using MySql.Data.MySqlClient;
+
     public class MovieCrud
     {
         string connString = "";
@@ -19,6 +21,32 @@
             // Om inte, lägg till filmen i databasen
             // Lägg till skådespelarna i databasen
             // Lägg till relationen mellan filmen och skådespelarna i databasen
+
+            Console.WriteLine("Hello, MySQL!");
+
+            string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=[Insert Username];Pwd=[Insert Password];";
+
+            var cnn = new MySqlConnection(connString);
+            cnn.Open();
+            Console.WriteLine($"Using Database: {cnn.Database}");
+            var sql = "INSERT INTO Movies (Title, Released, MainCharacter, Genre, IMDB) VALUES (@Title, @Released, @MainCharacter,@Genre, @IMDB)";
+            var cmd = new MySqlCommand(sql, cnn);
+
+            Console.WriteLine("Add a title of the movie: ");
+            cmd.Parameters.AddWithValue("@Title", Console.ReadLine());
+
+            Console.WriteLine("Add the release date of the movie(Year): ");
+            cmd.Parameters.AddWithValue("@Released", Console.ReadLine());
+
+            Console.WriteLine("Add the genre of the movie: ");
+            cmd.Parameters.AddWithValue("@Genre", Console.ReadLine());
+
+            Console.WriteLine("Add the movie link to IMDB: ");
+            cmd.Parameters.AddWithValue("@IMDB", Console.ReadLine());
+
+            cmd.ExecuteNonQuery();
+            Console.ReadLine();
+            cnn.Close();
         }
 
         public void AddActor(Actor actor)
