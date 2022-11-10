@@ -91,14 +91,27 @@
             // Kolla om relationen finns i databasen, i så fall är du klar
             // Annars lägg till relationen mellan filmen och skådespelaren i databasen
 
-            Console.WriteLine("What actor do you want to add?");
-            Console.ReadLine();
+
+            var cnn = new MySqlConnection(connString);
+            cnn.Open();
+            Console.WriteLine($"Using Database: {cnn.Database}");
+            var sql = "INSERT INTO Actor (ActorName) VALUES (@ActorName)";
+            var cmd = new MySqlCommand(sql, cnn);
+
+            Console.WriteLine("Add an actor");
+            cmd.Parameters.AddWithValue("@ActorName", Console.ReadLine());
+
+            // VAD GÖR VI NUUUU ?? :OOOOO
+
             // Kolla om skådisen redan finns
             // Lägg till skådisen i Actor.ActorName
-            Console.WriteLine("To what movie do you want to add the actor too?");
-            Console.ReadLine();
+            // "INSERT INTO Actor (ActorName) VALUES (@ActorName)"
             // Kolla om filmen finns
             // Länka Cast.MovieId med Actor.ActorId - Borde funka?
+
+            // "INSERT INTO Cast (ActorId) VALUES (@ActorId)"
+
+
         }
 
         //public List<Movie> GetMovies()
