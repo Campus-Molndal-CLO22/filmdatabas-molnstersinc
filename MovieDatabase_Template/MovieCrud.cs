@@ -1,11 +1,15 @@
 ﻿namespace MovieDatabase_Template
 {
+    using MySql.Data.MySqlClient;
+    using System.Security.Cryptography;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
     using MovieDatabase;
+    using MySql.Data.MySqlClient;
+
     public class MovieCrud
     {
         string connString = "";
@@ -19,6 +23,24 @@
             // Om inte, lägg till filmen i databasen
             // Lägg till skådespelarna i databasen
             // Lägg till relationen mellan filmen och skådespelarna i databasen
+
+            // See https://aka.ms/new-console-template for more information
+
+            Console.WriteLine("Hello, MySQL!");
+
+            string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=[Insert Username];Pwd=[Insert Password];";
+
+            var cnn = new MySqlConnection(connString);
+            cnn.Open();
+            Console.WriteLine($"Using Database: {cnn.Database}");
+            var sql = "INSERT INTO Movies (Title, Released, MainCharacter, Genre, IMDB) VALUES (@Title, @Released, @MainCharacter,@Genre, @IMDB)";
+            var cmd = new MySqlCommand(sql, cnn);
+            cmd.Parameters.AddWithValue("@Name", "cnn");
+            cmd.Parameters.AddWithValue("@Age", "cnn");
+            cmd.Parameters.AddWithValue("@NrOfKills", "cnn");
+            cmd.ExecuteNonQuery();
+            Console.ReadLine();
+            cnn.Close();
         }
 
         public void AddActor(Actor actor)
