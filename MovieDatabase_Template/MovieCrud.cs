@@ -24,7 +24,7 @@
 
             Console.WriteLine("Hello, MySQL!");
 
-            string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=[Insert Username];Pwd=[Insert Password];";
+            string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=s60127_Eric;Pwd=LXDfTUg5SuRQSUrf;";
 
             var cnn = new MySqlConnection(connString);
             cnn.Open();
@@ -62,106 +62,106 @@
             // Annars lägg till relationen mellan filmen och skådespelaren i databasen
         }
 
-        public List<Movie> GetMovies()
-        {
-            // Hämta alla filmer från databasen
-            // Hämta alla skådespelare från databasen
-            // Hämta alla relationer mellan filmer och skådespelare från databasen
-            // Skapa en lista med filmer
-            // Lägg till skådespelarna till filmerna
-            // Returnera listan med filmer
-        }
+        //public List<Movie> GetMovies()
+        //{
+        //    // Hämta alla filmer från databasen
+        //    // Hämta alla skådespelare från databasen
+        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
+        //    // Skapa en lista med filmer
+        //    // Lägg till skådespelarna till filmerna
+        //    // Returnera listan med filmer
+        //}
 
-        public List<Movie> GetMoviesContaining(string search)
-        {
-            // Hämta alla matchande filmer från databasen
-            // Hämta alla relationer mellan filmer och skådespelare från databasen
-            // Hämta alla relaterade skådespelare från databasen
-            // Skapa en lista med filmer
-            // Lägg till skådespelarna till filmerna
-            // Returnera listan med filmer
-        }
+        //public List<Movie> GetMoviesContaining(string search)
+        //{
+        //    // Hämta alla matchande filmer från databasen
+        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
+        //    // Hämta alla relaterade skådespelare från databasen
+        //    // Skapa en lista med filmer
+        //    // Lägg till skådespelarna till filmerna
+        //    // Returnera listan med filmer
+        //}
 
-        public List<Movie> GetMoviesFromYear(int year)
-        {
-            // Hämta alla matchande filmer från databasen
-            // Hämta alla relationer mellan filmer och skådespelare från databasen
-            // Hämta alla relaterade skådespelare från databasen
-            // Skapa en lista med filmer
-            // Lägg till skådespelarna till filmerna
-            // Returnera listan med filmer
-        }
+        //public List<Movie> GetMoviesFromYear(int year)
+        //{
+        //    // Hämta alla matchande filmer från databasen
+        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
+        //    // Hämta alla relaterade skådespelare från databasen
+        //    // Skapa en lista med filmer
+        //    // Lägg till skådespelarna till filmerna
+        //    // Returnera listan med filmer
+        //}
 
-        public List<Movie> GetMovie(int Id)
-        {
-            // Hämta matchande film från databasen
-            // Hämta alla relationer mellan filmer och skådespelare från databasen
-            // Hämta alla relaterade skådespelare från databasen
-            // Skapa en lista med filmer
-            // Lägg till skådespelarna till filmerna
-            // Returnera listan med filmer
-        }
+        //public List<Movie> GetMovie(int Id)
+        //{
+        //    // Hämta matchande film från databasen
+        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
+        //    // Hämta alla relaterade skådespelare från databasen
+        //    // Skapa en lista med filmer
+        //    // Lägg till skådespelarna till filmerna
+        //    // Returnera listan med filmer
+        //}
 
-        public List<Movie> GetMovie(string name)
-        {
-            // Hämta matchande film från databasen
-            // Hämta alla relationer mellan filmer och skådespelare från databasen
-            // Hämta alla relaterade skådespelare från databasen
-            // Skapa en lista med filmer
-            // Lägg till skådespelarna till filmerna
-            // Returnera listan med filmer
-        }
+        //public List<Movie> GetMovie(string name)
+        //{
+        //    // Hämta matchande film från databasen
+        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
+        //    // Hämta alla relaterade skådespelare från databasen
+        //    // Skapa en lista med filmer
+        //    // Lägg till skådespelarna till filmerna
+        //    // Returnera listan med filmer
+        //}
 
 
-        public List<Actor> GetActors()
-        {
-            // Hämta alla skådespelare från databasen
-            // Hämta alla relationer mellan filmer och skådespelare från databasen
-            // Hämta alla matchande filmer från databasen
-            // Skapa en lista med skådespelare
-            // Lägg till filmerna till skådespelarna
-            // Returnera listan med skådespelare
-        }
+        //public List<Actor> GetActors()
+        //{
+        //    // Hämta alla skådespelare från databasen
+        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
+        //    // Hämta alla matchande filmer från databasen
+        //    // Skapa en lista med skådespelare
+        //    // Lägg till filmerna till skådespelarna
+        //    // Returnera listan med skådespelare
+        //}
 
-        public List<Actor> GetActorsInMovie(Movie movie)
-        {
-            // Hämta alla skådespelare från databasen
-            // Hämta alla relationer mellan filmer och skådespelare från databasen
-            // Hämta alla matchande filmer från databasen
-            // Skapa en lista med skådespelare
-            // Lägg till filmerna till skådespelarna
-            // Returnera listan med skådespelare
-        }
+        //public List<Actor> GetActorsInMovie(Movie movie)
+        //{
+        //    // Hämta alla skådespelare från databasen
+        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
+        //    // Hämta alla matchande filmer från databasen
+        //    // Skapa en lista med skådespelare
+        //    // Lägg till filmerna till skådespelarna
+        //    // Returnera listan med skådespelare
+        //}
 
-        public List<Movie> GetMoviesWithActor(Actor actor)
-        {
-            // Hämta alla skådespelare från databasen
-            // Hämta alla relationer mellan filmer och skådespelare från databasen
-            // Hämta alla matchande filmer från databasen
-            // Skapa en lista med skådespelare
-            // Lägg till filmerna till skådespelarna
-            // Returnera listan med skådespelare
-        }
+        //public List<Movie> GetMoviesWithActor(Actor actor)
+        //{
+        //    // Hämta alla skådespelare från databasen
+        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
+        //    // Hämta alla matchande filmer från databasen
+        //    // Skapa en lista med skådespelare
+        //    // Lägg till filmerna till skådespelarna
+        //    // Returnera listan med skådespelare
+        //}
 
-        public List<Movie> GetMoviesWithActor(string actorName)
-        {
-            // Hämta alla skådespelare från databasen
-            // Hämta alla relationer mellan filmer och skådespelare från databasen
-            // Hämta alla matchande filmer från databasen
-            // Skapa en lista med skådespelare
-            // Lägg till filmerna till skådespelarna
-            // Returnera listan med skådespelare
-        }
+        //public List<Movie> GetMoviesWithActor(string actorName)
+        //{
+        //    // Hämta alla skådespelare från databasen
+        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
+        //    // Hämta alla matchande filmer från databasen
+        //    // Skapa en lista med skådespelare
+        //    // Lägg till filmerna till skådespelarna
+        //    // Returnera listan med skådespelare
+        //}
 
-        public List<Movie> GetMoviesWithActor(int actorId)
-        {
-            // Hämta alla skådespelare från databasen
-            // Hämta alla relationer mellan filmer och skådespelare från databasen
-            // Hämta alla matchande filmer från databasen
-            // Skapa en lista med skådespelare
-            // Lägg till filmerna till skådespelarna
-            // Returnera listan med skådespelare
-        }
+        //public List<Movie> GetMoviesWithActor(int actorId)
+        //{
+        //    // Hämta alla skådespelare från databasen
+        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
+        //    // Hämta alla matchande filmer från databasen
+        //    // Skapa en lista med skådespelare
+        //    // Lägg till filmerna till skådespelarna
+        //    // Returnera listan med skådespelare
+        //}
 
         public void DeleteActor(int actorId)
         {
@@ -169,7 +169,7 @@
             // Ta bort alla relationer mellan skådespelaren och filmerna från databasen
         }
 
-        public void DeleteMove(int moveId)
+        public void DeleteMovie(int movieId)
         {
             // Ta bort filmen från databasen
             // Ta bort alla relationer mellan filmen och skådespelarna från databasen
@@ -181,6 +181,7 @@
             Console.WriteLine($"Using Database: {cnn.Database}");
             var sql = "DELETE FROM Movies WHERE Title LIKE '@Input'";
             var cmd = new MySqlCommand(sql, cnn);
+            Console.WriteLine("Vafan heter filmen du vill ta bort?");
             var input = Console.ReadLine();
             cmd.Parameters.AddWithValue("@Input", input);
             cmd.ExecuteNonQuery();
