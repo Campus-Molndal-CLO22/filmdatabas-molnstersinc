@@ -58,7 +58,27 @@
             // Kolla om skådespelaren finns i databasen
             // Uppdatera i så fall annars
             // Lägg till skådespelaren i databasen
+
+            string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=s60127_Eric;Pwd=LXDfTUg5SuRQSUrf;";
+
+            var cnn = new MySqlConnection(connString);
+            cnn.Open();
+            Console.WriteLine($"Using Database: {cnn.Database}");
+            var sql = "INSERT INTO Actor (ActorName, BornYear) VALUES (@ActorName, @BornYear)";
+            var cmd = new MySqlCommand(sql, cnn);
+
+            Console.WriteLine("Actors full name: ");
+            cmd.Parameters.AddWithValue("@ActorName", Console.ReadLine());
+
+            Console.WriteLine("Actor is born year: ");
+            cmd.Parameters.AddWithValue("@BornYear", Console.ReadLine());
+
+            Console.WriteLine("the actor has been added...");
+            cmd.ExecuteNonQuery();
+            cnn.Close();
         }
+
+
 
         public void AddActorToMovie(Actor actor, Movie movie)
         {
@@ -169,8 +189,18 @@
 
         public void DeleteActor(int actorId)
         {
-            // Ta bort skådespelaren från databasen
-            // Ta bort alla relationer mellan skådespelaren och filmerna från databasen
+            string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=s60127_Eric;Pwd= LXDfTUg5SuRQSUrf;";
+            var cnn = new MySqlConnection(connString);
+            cnn.Open();
+            Console.WriteLine($"Using Database: {cnn.Database}");
+            var sql = "DELETE FROM Actor WHERE ActorName LIKE @Input";
+            var cmd = new MySqlCommand(sql, cnn);
+            Console.WriteLine("Vafan heter skådisen du vill ta bort?");
+            var input = Console.ReadLine();
+            cmd.Parameters.AddWithValue("@Input", input);
+            cmd.ExecuteNonQuery();
+            Console.WriteLine($"The {input} has been deleted");
+            cnn.Close();
         }
 
         public void DeleteMovie(int movieId)

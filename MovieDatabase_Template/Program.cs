@@ -14,7 +14,10 @@ string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=[In
 var movieCrud = new MovieCrud(connString);
 var movie = new Movie();
 var movieId = movie.Id;
-Console.WriteLine("1 för add, 2 för delete");
+var actor = new Actor();
+var actorId = actor.Id;
+
+Console.WriteLine("1 för add, 2 för delete, 3 för add actor, 4 to delete actor");
 switch (Console.ReadKey().Key)
 {
     case ConsoleKey.D1:
@@ -24,5 +27,11 @@ switch (Console.ReadKey().Key)
     case ConsoleKey.D2:
     case ConsoleKey.NumPad2:
         movieCrud.DeleteMovie(movieId);
+        break;
+    case ConsoleKey.D3:
+        movieCrud.AddActor(actor);
+        break;
+    case ConsoleKey.D4:
+        movieCrud.DeleteActor(actorId);
         break;
 }
