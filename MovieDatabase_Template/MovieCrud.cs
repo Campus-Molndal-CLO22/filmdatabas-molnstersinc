@@ -9,6 +9,7 @@
     using System.Threading.Tasks;
     using MovieDatabase;
     using MySql.Data.MySqlClient;
+    using System.Net.Http.Headers;
 
     public class MovieCrud
     {
@@ -35,9 +36,19 @@
             Console.WriteLine($"Using Database: {cnn.Database}");
             var sql = "INSERT INTO Movies (Title, Released, MainCharacter, Genre, IMDB) VALUES (@Title, @Released, @MainCharacter,@Genre, @IMDB)";
             var cmd = new MySqlCommand(sql, cnn);
-            cmd.Parameters.AddWithValue("@Name", "cnn");
-            cmd.Parameters.AddWithValue("@Age", "cnn");
-            cmd.Parameters.AddWithValue("@NrOfKills", "cnn");
+
+            Console.WriteLine("Add a title of the movie: ");
+            cmd.Parameters.AddWithValue("@Title", Console.ReadLine());
+
+            Console.WriteLine("Add the release date of the movie(Year): ");
+            cmd.Parameters.AddWithValue("@Released", Console.ReadLine());
+
+            Console.WriteLine("Add the genre of the movie: ");
+            cmd.Parameters.AddWithValue("@Genre", Console.ReadLine());
+
+            Console.WriteLine("Add the movie link to IMDB: ");
+            cmd.Parameters.AddWithValue("@IMDB", Console.ReadLine());
+
             cmd.ExecuteNonQuery();
             Console.ReadLine();
             cnn.Close();
