@@ -29,7 +29,7 @@
             var cnn = new MySqlConnection(connString);
             cnn.Open();
             Console.WriteLine($"Using Database: {cnn.Database}");
-            var sql = "INSERT INTO Movies (Title, Released, MainCharacter, Genre, IMDB) VALUES (@Title, @Released, @MainCharacter,@Genre, @IMDB)";
+            var sql = "INSERT INTO Movies (Title, Released, MainCharacter, Genre, IMDB) VALUES (@Title, @Released, @MainCharacter ,@Genre, @IMDB)";
             var cmd = new MySqlCommand(sql, cnn);
 
             Console.WriteLine("Add a title of the movie: ");
@@ -38,6 +38,9 @@
             Console.WriteLine("Add the release date of the movie(Year): ");
             cmd.Parameters.AddWithValue("@Released", Console.ReadLine());
 
+            Console.WriteLine("Add the main character of the movie: ");
+            cmd.Parameters.AddWithValue("@MainCharacter", Console.ReadLine());
+
             Console.WriteLine("Add the genre of the movie: ");
             cmd.Parameters.AddWithValue("@Genre", Console.ReadLine());
 
@@ -45,6 +48,7 @@
             cmd.Parameters.AddWithValue("@IMDB", Console.ReadLine());
 
             cmd.ExecuteNonQuery();
+            Console.WriteLine($"The movie has been added");
             Console.ReadLine();
             cnn.Close();
         }
@@ -179,12 +183,13 @@
             var cnn = new MySqlConnection(connString);
             cnn.Open();
             Console.WriteLine($"Using Database: {cnn.Database}");
-            var sql = "DELETE FROM Movies WHERE Title LIKE '@Input'";
+            var sql = "DELETE FROM Movies WHERE Title LIKE @Input";
             var cmd = new MySqlCommand(sql, cnn);
             Console.WriteLine("Vafan heter filmen du vill ta bort?");
             var input = Console.ReadLine();
             cmd.Parameters.AddWithValue("@Input", input);
             cmd.ExecuteNonQuery();
+            Console.WriteLine($"The {input} has been deleted");
             cnn.Close();
         }
     }
