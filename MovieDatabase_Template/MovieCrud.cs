@@ -90,6 +90,15 @@
         {
             // Kolla om relationen finns i databasen, i så fall är du klar
             // Annars lägg till relationen mellan filmen och skådespelaren i databasen
+
+            Console.WriteLine("What actor do you want to add?");
+            Console.ReadLine();
+            // Kolla om skådisen redan finns
+            // Lägg till skådisen i Actor.ActorName
+            Console.WriteLine("To what movie do you want to add the actor too?");
+            Console.ReadLine();
+            // Kolla om filmen finns
+            // Länka Cast.MovieId med Actor.ActorId - Borde funka?
         }
 
         //public List<Movie> GetMovies()
