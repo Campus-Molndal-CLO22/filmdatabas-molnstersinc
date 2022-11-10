@@ -16,7 +16,6 @@
         // Lägg till fler properties
         public List<Actor> Actors { get; set; }
     }
-
     //public class Actor
     //{
     //    public int Id { get; set; }

@@ -58,7 +58,13 @@
             // Kolla om skådespelaren finns i databasen
             // Uppdatera i så fall annars
             // Lägg till skådespelaren i databasen
-
+            Console.WriteLine("Actors full name: ");
+            var name = Console.ReadLine();
+            if (actor.Name == name) {
+                Console.WriteLine("This actor already exists");
+            } 
+            else if (actor.Name != name)
+            {
             string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=s60127_Eric;Pwd=LXDfTUg5SuRQSUrf;";
 
             var cnn = new MySqlConnection(connString);
@@ -67,8 +73,7 @@
             var sql = "INSERT INTO Actor (ActorName, BornYear) VALUES (@ActorName, @BornYear)";
             var cmd = new MySqlCommand(sql, cnn);
 
-            Console.WriteLine("Actors full name: ");
-            cmd.Parameters.AddWithValue("@ActorName", Console.ReadLine());
+            cmd.Parameters.AddWithValue("@ActorName", name);
 
             Console.WriteLine("Actor is born year: ");
             cmd.Parameters.AddWithValue("@BornYear", Console.ReadLine());
@@ -76,6 +81,7 @@
             Console.WriteLine("the actor has been added...");
             cmd.ExecuteNonQuery();
             cnn.Close();
+            }
         }
 
 
