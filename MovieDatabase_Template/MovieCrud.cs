@@ -64,7 +64,13 @@
             // Kolla om skådespelaren finns i databasen
             // Uppdatera i så fall annars
             // Lägg till skådespelaren i databasen
-
+            Console.WriteLine("Actors full name: ");
+            var name = Console.ReadLine();
+            if (actor.Name == name) {
+                Console.WriteLine("This actor already exists");
+            } 
+            else if (actor.Name != name)
+            {
             string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=s60127_Eric;Pwd=LXDfTUg5SuRQSUrf;";
 
             var cnn = new MySqlConnection(connString);
@@ -73,8 +79,7 @@
             var sql = "INSERT INTO Actor (ActorName, BornYear) VALUES (@ActorName, @BornYear)";
             var cmd = new MySqlCommand(sql, cnn);
 
-            Console.WriteLine("Actors full name: ");
-            cmd.Parameters.AddWithValue("@ActorName", Console.ReadLine());
+            cmd.Parameters.AddWithValue("@ActorName", name);
 
             Console.WriteLine("Actor is born year: ");
             cmd.Parameters.AddWithValue("@BornYear", Console.ReadLine());
@@ -82,12 +87,35 @@
             Console.WriteLine("the actor has been added...");
             cmd.ExecuteNonQuery();
             cnn.Close();
+            }
         }
 
         public void AddActorToMovie(Actor actor, Movie movie)
         {
             // Kolla om relationen finns i databasen, i så fall är du klar
             // Annars lägg till relationen mellan filmen och skådespelaren i databasen
+
+
+            var cnn = new MySqlConnection(connString);
+            cnn.Open();
+            Console.WriteLine($"Using Database: {cnn.Database}");
+            var sql = "INSERT INTO Actor (ActorName) VALUES (@ActorName)";
+            var cmd = new MySqlCommand(sql, cnn);
+
+            Console.WriteLine("Add an actor");
+            cmd.Parameters.AddWithValue("@ActorName", Console.ReadLine());
+
+            // VAD GÖR VI NUUUU ?? :OOOOO
+
+            // Kolla om skådisen redan finns
+            // Lägg till skådisen i Actor.ActorName
+            // "INSERT INTO Actor (ActorName) VALUES (@ActorName)"
+            // Kolla om filmen finns
+            // Länka Cast.MovieId med Actor.ActorId - Borde funka?
+
+            // "INSERT INTO Cast (ActorId) VALUES (@ActorId)"
+
+
         }
 
         public List<Movie> GetMovies()
@@ -163,6 +191,7 @@
         //    // Skapa en lista med skådespelare
         //    // Lägg till filmerna till skådespelarna
         //    // Returnera listan med skådespelare
+            
         //}
 
         //public List<Actor> GetActorsInMovie(Movie movie)
