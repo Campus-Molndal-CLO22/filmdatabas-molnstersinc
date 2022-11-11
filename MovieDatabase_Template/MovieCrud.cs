@@ -2,14 +2,20 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
     using MovieDatabase;
     using MySql.Data.MySqlClient;
+    using Org.BouncyCastle.Asn1.Cms;
 
     public class MovieCrud
     {
+        DataTable dt = new DataTable();//instansiera i moviecrud klass, så det kan användas i metoderna..
+        MySqlDataAdapter adt = new MySqlDataAdapter(); //instansiera i moviecrud klass, så det kan användas i metoderna..
+        string sql = ""; //skapa variabel
+
         string connString = "";
         MySqlConnection cnn = null;
 
@@ -84,15 +90,29 @@
             // Annars lägg till relationen mellan filmen och skådespelaren i databasen
         }
 
-        //public List<Movie> GetMovies()
-        //{
-        //    // Hämta alla filmer från databasen
-        //    // Hämta alla skådespelare från databasen
-        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
-        //    // Skapa en lista med filmer
-        //    // Lägg till skådespelarna till filmerna
-        //    // Returnera listan med filmer
-        //}
+        public List<Movie> GetMovies()
+        {
+            Movie movie = new Movie();
+            List<Movie> movieList = new();
+            dt = new DataTable();
+            sql = "SELECT * "
+            + "FROM Movies";//SQL kod, som skickas in (sen)
+            adt = new MySqlDataAdapter(sql, cnn);//tar med parameter från sql koden och skickar till databasen. 
+            adt.Fill(dt);//hämtar data från databasen som gör så att vi ska kunna se den. 
+
+            foreach (DataRow row in dt.Rows) 
+            {
+            
+            };
+
+
+            // Hämta alla filmer från databasen
+            // Hämta alla skådespelare från databasen
+            // Hämta alla relationer mellan filmer och skådespelare från databasen
+            // Skapa en lista med filmer
+            // Lägg till skådespelarna till filmerna
+            // Returnera listan med filmer
+        }
 
         //public List<Movie> GetMoviesContaining(string search)
         //{

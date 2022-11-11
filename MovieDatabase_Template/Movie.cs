@@ -9,10 +9,12 @@
 
     public class Movie
     {
-        public int Id { get; set; }
+        public int Id { get; set; } //auto increment
         public string Title { get; set; }
         public int Year { get; set; }
-
+        public string Genre { get; set; }
+        public string IMDB { get; set; }
+        public string MainCharacter { get; set; }
         // Lägg till fler properties
         public List<Actor> Actors { get; set; }
     }
