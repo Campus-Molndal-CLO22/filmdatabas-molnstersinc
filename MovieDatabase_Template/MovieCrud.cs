@@ -183,16 +183,26 @@
         //}
 
 
-        //public List<Actor> GetActors()
-        //{
-        //    // Hämta alla skådespelare från databasen
-        //    // Hämta alla relationer mellan filmer och skådespelare från databasen
-        //    // Hämta alla matchande filmer från databasen
-        //    // Skapa en lista med skådespelare
-        //    // Lägg till filmerna till skådespelarna
-        //    // Returnera listan med skådespelare
+        public List<Actor> GetActors()
+        {
+            Actor actor = new Actor();
+            List<Actor> listOfActors = new();
+            dt = new DataTable();
+
+            sql = "SELECT * "
+            + "FROM Actor";                                 //SQL kod, som skickas in (sen)
+            adt = new MySqlDataAdapter(sql, cnn);           //tar med parameter från sql koden och skickar till databasen. 
+            adt.Fill(dt);                                   //hämtar data från databasen som gör så att vi ska kunna se den. 
             
-        //}
+            
+            // Hämta alla skådespelare från databasen
+            // Hämta alla relationer mellan filmer och skådespelare från databasen
+            // Hämta alla matchande filmer från databasen
+            // Skapa en lista med skådespelare
+            // Lägg till filmerna till skådespelarna
+            // Returnera listan med skådespelare
+
+        }
 
         //public List<Actor> GetActorsInMovie(Movie movie)
         //{
