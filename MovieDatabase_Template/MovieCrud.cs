@@ -78,8 +78,6 @@
             cnn.Close();
         }
 
-
-
         public void AddActorToMovie(Actor actor, Movie movie)
         {
             // Kolla om relationen finns i databasen, i så fall är du klar
