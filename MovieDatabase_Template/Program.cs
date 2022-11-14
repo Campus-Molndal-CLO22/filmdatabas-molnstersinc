@@ -30,7 +30,7 @@ while (true)
             movieCrud.DeleteMovie(movieId);
             break;
         case ConsoleKey.D3:
-            movieCrud.AddActor(actor);
+            movieCrud.AddActor(actor, movie);
             break;
         case ConsoleKey.D4:
             movieCrud.DeleteActor(actorId);
