@@ -9,17 +9,15 @@
 
     public class Movie
     {
-        public int Id { get; set; }
+        public int Id { get; set; } //auto incrament
         public string Title { get; set; }
         public int Year { get; set; }
-
-        // Lägg till fler properties
+        public string Genre { get; set; }
+        public string IMDB { get; set; }
+        public string MainCharacter { get; set; }
         public List<Actor> Actors { get; set; }
     }
-    //public class Actor
-    //{
-    //    public int Id { get; set; }
-    //    public string Name;
-    //    public int BornYear { get; set; }
+
+        // Lägg till fler properties
     //}
 }
