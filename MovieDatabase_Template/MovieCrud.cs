@@ -133,7 +133,7 @@
 
             foreach (DataRow row in dt.Rows) 
             {
-                movie.Id = int.Parse(row["Id"].ToString()); 
+                //movie.Id = int.Parse(row["Id"].ToString()); 
                 movie.Title = row["Title"].ToString(); 
                 movie.Released = row["Released"].ToString();
                 movie.MainCharacter = row["MainCharacter"].ToString();
