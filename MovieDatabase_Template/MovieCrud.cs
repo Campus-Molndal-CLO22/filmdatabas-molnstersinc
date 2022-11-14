@@ -79,7 +79,7 @@
             var sql = "INSERT INTO Actor (ActorName, BornYear) VALUES (@ActorName, @BornYear)";
             var cmd = new MySqlCommand(sql, cnn);
 
-            cmd.Parameters.AddWithValue("@ActorName", name);
+                cmd.Parameters.AddWithValue("@ActorName", name);
 
             Console.WriteLine("Actor is born year: ");
             cmd.Parameters.AddWithValue("@BornYear", Console.ReadLine());
@@ -120,6 +120,9 @@
 
         public List<Movie> GetMovies()
         {
+            string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=s60127_Eric;Pwd=LXDfTUg5SuRQSUrf;";
+            var cnn = new MySqlConnection(connString);
+            cnn.Open();
             Movie movie = new Movie();
             List<Movie> movieList = new();
             dt = new DataTable();
@@ -130,9 +133,16 @@
 
             foreach (DataRow row in dt.Rows) 
             {
-            
+                movie.Id = int.Parse(row["Id"].ToString()); 
+                movie.Title = row["Title"].ToString(); 
+                movie.Released = row["Released"].ToString();
+                movie.MainCharacter = row["MainCharacter"].ToString();
+                movie.Genre = row["Genre"].ToString();
+                movie.IMDB = row["IMDB"].ToString();
+                movieList.Add(movie);
             };
-
+            return movieList;
+            cnn.Close();
 
             // Hämta alla filmer från databasen
             // Hämta alla skådespelare från databasen
@@ -183,7 +193,7 @@
         //}
 
 
-        public List<Actor> GetActors()
+       /* public List<Actor> GetActors()
         {
             Actor actor = new Actor();
             List<Actor> listOfActors = new();
@@ -203,7 +213,7 @@
             // Lägg till filmerna till skådespelarna
             // Returnera listan med skådespelare
 
-        }
+        }*/
 
         //public List<Actor> GetActorsInMovie(Movie movie)
         //{
