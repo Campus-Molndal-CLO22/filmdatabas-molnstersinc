@@ -123,7 +123,6 @@
             string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=s60127_Eric;Pwd=LXDfTUg5SuRQSUrf;";
             var cnn = new MySqlConnection(connString);
             cnn.Open();
-            Movie movie = new Movie();
             List<Movie> movieList = new();
             dt = new DataTable();
             sql = "SELECT * "
@@ -131,15 +130,18 @@
             adt = new MySqlDataAdapter(sql, cnn);//tar med parameter från sql koden och skickar till databasen. 
             adt.Fill(dt);//hämtar data från databasen som gör så att vi ska kunna se den. 
 
+            int i = 0;
             foreach (DataRow row in dt.Rows) 
             {
-                movie.Id = int.Parse(row["Id"].ToString()); 
+                Movie movie = new Movie();
+                movie.Id = int.Parse(row["MovieId"].ToString()); 
                 movie.Title = row["Title"].ToString(); 
                 movie.Released = row["Released"].ToString();
                 movie.MainCharacter = row["MainCharacter"].ToString();
                 movie.Genre = row["Genre"].ToString();
                 movie.IMDB = row["IMDB"].ToString();
                 movieList.Add(movie);
+                i++;
             };
             return movieList;
             cnn.Close();

@@ -17,7 +17,7 @@ var movieId = movie.Id;
 var actor = new Actor();
 var actorId = actor.Id;
 
-Console.WriteLine("1 för add, 2 för delete, 3 för add actor, 4 to delete actor");
+Console.WriteLine("1 för add, 2 för delete, 3 för add actor, 4 to delete actor, 5 to view movie list");
 switch (Console.ReadKey().Key)
 {
     case ConsoleKey.D1:
@@ -36,6 +36,9 @@ switch (Console.ReadKey().Key)
         break;
     case ConsoleKey.D5:
         var movieList = movieCrud.GetMovies();
-        Console.WriteLine(movieList);
+        for (int i = 0; i < movieList.Count; i++)
+        {
+            Console.WriteLine($"{movieList[i].Id} ,{movieList[i].Title},  {movieList[i].Released}, {movieList[i].MainCharacter}, {movieList[i].Genre}, {movieList[i].IMDB}");
+        }
         break;
 }
