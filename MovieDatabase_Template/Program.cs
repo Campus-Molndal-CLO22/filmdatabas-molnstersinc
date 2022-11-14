@@ -1,6 +1,6 @@
 ﻿using MovieDatabase;
 using MovieDatabase_Template;
-
+Visuals visuals = new();
 Console.WriteLine("Hello, Movie fans!");
 
 // Börja med att lägga till Nuget för MySQL
@@ -15,30 +15,34 @@ var movieCrud = new MovieCrud(connString);
 var movie = new Movie();
 var movieId = movie.Id;
 var actor = new Actor();
-var actorId = actor.Id;
-
-Console.WriteLine("1 för add, 2 för delete, 3 för add actor, 4 to delete actor, 5 to view movie list");
-switch (Console.ReadKey().Key)
+var actorId = actor.ActorId;
+while (true)
 {
-    case ConsoleKey.D1:
-    case ConsoleKey.NumPad1:
-        movieCrud.AddMovie(movie);
-        break;
-    case ConsoleKey.D2:
-    case ConsoleKey.NumPad2:
-        movieCrud.DeleteMovie(movieId);
-        break;
-    case ConsoleKey.D3:
-        movieCrud.AddActor(actor);
-        break;
-    case ConsoleKey.D4:
-        movieCrud.DeleteActor(actorId);
-        break;
-    case ConsoleKey.D5:
-        var list = movieCrud.GetMovies();
-        for (int i = 0; i < list.Count; i++)
-        {
-            Console.WriteLine($"{list[i].Id} ,{list[i].Title},  {list[i].Released}, {list[i].MainCharacter}, {list[i].Genre}, {list[i].IMDB}");
-        }
-        break;
+    Console.WriteLine("1 för add, 2 för delete, 3 för add actor, 4 to delete actor, 5 to view movie list, 6 view actors");
+    switch (Console.ReadKey().Key)
+    {
+        case ConsoleKey.D1:
+        case ConsoleKey.NumPad1:
+            movieCrud.AddMovie(movie);
+            break;
+        case ConsoleKey.D2:
+        case ConsoleKey.NumPad2:
+            movieCrud.DeleteMovie(movieId);
+            break;
+        case ConsoleKey.D3:
+            movieCrud.AddActor(actor);
+            break;
+        case ConsoleKey.D4:
+            movieCrud.DeleteActor(actorId);
+            break;
+        case ConsoleKey.D5:
+            visuals.View("Movies", movieCrud);
+            break;
+        case ConsoleKey.D6:
+            visuals.View("Actors", movieCrud);
+            break;
+        case ConsoleKey.Escape:
+            Environment.Exit(0);
+            break;
+    }
 }
