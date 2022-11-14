@@ -35,10 +35,10 @@ switch (Console.ReadKey().Key)
         movieCrud.DeleteActor(actorId);
         break;
     case ConsoleKey.D5:
-        var movieList = movieCrud.GetMovies();
-        for (int i = 0; i < movieList.Count; i++)
+        var list = movieCrud.GetMovies();
+        for (int i = 0; i < list.Count; i++)
         {
-            Console.WriteLine($"{movieList[i].Id} ,{movieList[i].Title},  {movieList[i].Released}, {movieList[i].MainCharacter}, {movieList[i].Genre}, {movieList[i].IMDB}");
+            Console.WriteLine($"{list[i].Id} ,{list[i].Title},  {list[i].Released}, {list[i].MainCharacter}, {list[i].Genre}, {list[i].IMDB}");
         }
         break;
 }
