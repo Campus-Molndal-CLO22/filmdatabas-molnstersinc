@@ -194,6 +194,7 @@
             adt = new MySqlDataAdapter(sql, cnn);           //tar med parameter från sql koden och skickar till databasen. 
             adt.Fill(dt);                                   //hämtar data från databasen som gör så att vi ska kunna se den. 
             
+
             
             // Hämta alla skådespelare från databasen
             // Hämta alla relationer mellan filmer och skådespelare från databasen
