@@ -11,7 +11,7 @@
     {
         public int Id { get; set; } //auto incrament
         public string Title { get; set; }
-        public int Year { get; set; }
+        public string Released { get; set; }
         public string Genre { get; set; }
         public string IMDB { get; set; }
         public string MainCharacter { get; set; }

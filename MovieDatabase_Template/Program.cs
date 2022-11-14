@@ -34,4 +34,8 @@ switch (Console.ReadKey().Key)
     case ConsoleKey.D4:
         movieCrud.DeleteActor(actorId);
         break;
+    case ConsoleKey.D5:
+        var movieList = movieCrud.GetMovies();
+        Console.WriteLine(movieList);
+        break;
 }
