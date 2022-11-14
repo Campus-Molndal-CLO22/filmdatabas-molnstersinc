@@ -66,10 +66,10 @@
             // Lägg till skådespelaren i databasen
             Console.WriteLine("Actors full name: ");
             var name = Console.ReadLine();
-            if (actor.Name == name) {
+            if (actor.ActorName == name) {
                 Console.WriteLine("This actor already exists");
             } 
-            else if (actor.Name != name)
+            else if (actor.ActorName != name)
             {
             string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=s60127_Eric;Pwd=LXDfTUg5SuRQSUrf;";
 
@@ -123,7 +123,6 @@
             string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=s60127_Eric;Pwd=LXDfTUg5SuRQSUrf;";
             var cnn = new MySqlConnection(connString);
             cnn.Open();
-            Movie movie = new Movie();
             List<Movie> movieList = new();
             dt = new DataTable();
             sql = "SELECT * "
@@ -131,15 +130,18 @@
             adt = new MySqlDataAdapter(sql, cnn);//tar med parameter från sql koden och skickar till databasen. 
             adt.Fill(dt);//hämtar data från databasen som gör så att vi ska kunna se den. 
 
+            int i = 0;
             foreach (DataRow row in dt.Rows) 
             {
-                //movie.Id = int.Parse(row["Id"].ToString()); 
+                Movie movie = new Movie();
+                movie.Id = int.Parse(row["MovieId"].ToString()); 
                 movie.Title = row["Title"].ToString(); 
                 movie.Released = row["Released"].ToString();
                 movie.MainCharacter = row["MainCharacter"].ToString();
                 movie.Genre = row["Genre"].ToString();
                 movie.IMDB = row["IMDB"].ToString();
                 movieList.Add(movie);
+                i++;
             };
             return movieList;
             cnn.Close();
@@ -193,9 +195,11 @@
         //}
 
 
-       /* public List<Actor> GetActors()
+       public List<Actor> GetActors()
         {
-            Actor actor = new Actor();
+            string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=s60127_Eric;Pwd=LXDfTUg5SuRQSUrf;";
+            var cnn = new MySqlConnection(connString);
+            cnn.Open();
             List<Actor> listOfActors = new();
             dt = new DataTable();
 
@@ -204,7 +208,23 @@
             adt = new MySqlDataAdapter(sql, cnn);           //tar med parameter från sql koden och skickar till databasen. 
             adt.Fill(dt);                                   //hämtar data från databasen som gör så att vi ska kunna se den. 
             
-            
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                Actor actor = new Actor();
+              
+                actor.ActorId = int.Parse(row["ActorId"].ToString());
+                actor.ActorName = row["ActorName"].ToString();
+                actor.BornYear = int.Parse(row["BornYear"].ToString());
+         
+                listOfActors.Add(actor);
+                i++;
+            };
+         
+            return listOfActors;
+            cnn.Close();
+
+
             // Hämta alla skådespelare från databasen
             // Hämta alla relationer mellan filmer och skådespelare från databasen
             // Hämta alla matchande filmer från databasen
@@ -212,7 +232,7 @@
             // Lägg till filmerna till skådespelarna
             // Returnera listan med skådespelare
 
-        }*/
+        }
 
         //public List<Actor> GetActorsInMovie(Movie movie)
         //{
