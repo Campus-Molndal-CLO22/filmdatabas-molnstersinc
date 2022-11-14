@@ -73,7 +73,7 @@
             var sql = "INSERT INTO Actor (ActorName, BornYear) VALUES (@ActorName, @BornYear)";
             var cmd = new MySqlCommand(sql, cnn);
 
-            cmd.Parameters.AddWithValue("@ActorName", name);
+                cmd.Parameters.AddWithValue("@ActorName", name);
 
             Console.WriteLine("Actor is born year: ");
             cmd.Parameters.AddWithValue("@BornYear", Console.ReadLine());
