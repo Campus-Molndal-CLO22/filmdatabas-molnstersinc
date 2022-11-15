@@ -59,13 +59,13 @@
             cnn.Close();
         }
 
-        public void AddActor(Actor actor)
+        public void AddActor(Actor actor, Movie movie)
         {
             // Kolla om skådespelaren finns i databasen
             // Uppdatera i så fall annars
             // Lägg till skådespelaren i databasen
             Console.WriteLine("Actors full name: ");
-            var name = Console.ReadLine();
+            var name = Console.ReadLine().ToUpper();
             if (actor.ActorName == name) {
                 Console.WriteLine("This actor already exists");
             } 
@@ -86,25 +86,68 @@
 
             Console.WriteLine("the actor has been added...");
             cmd.ExecuteNonQuery();
-            cnn.Close();
+                cnn.Close();
+                //AddActorToMovie(actor, movie, name);
             }
         }
 
-        public void AddActorToMovie(Actor actor, Movie movie)
+        public void AddActorToMovie(Actor actor, Movie movie, string name)
         {
-            // Kolla om relationen finns i databasen, i så fall är du klar
-            // Annars lägg till relationen mellan filmen och skådespelaren i databasen
-
-
+            string movieId = "";
+            Console.WriteLine("What is the name of the movie you want to add actor to?");
+            string movieName = Console.ReadLine().ToUpper();
+            var movies = GetMovies();
+            int x = 0;
+            string connString = @"Server=ns8.inleed.net;Database=s60127_MolnstersInc;Uid=s60127_Eric;Pwd=LXDfTUg5SuRQSUrf;";
             var cnn = new MySqlConnection(connString);
             cnn.Open();
-            Console.WriteLine($"Using Database: {cnn.Database}");
-            var sql = "INSERT INTO Actor (ActorName) VALUES (@ActorName)";
+            do
+            {
+                if (movies[x].Title.ToUpper() == movieName)
+                {
+                    movieId = movies[x].Id.ToString();
+                    break;
+                } else
+                {
+                    x++;
+                }
+            } while (true);
+            // Kolla om relationen finns i databasen, i så fall är du klar
+            var actors = GetActors();
+            int i = 0;
+                int y = 0;
+            string act = actors[y].ActorName.ToUpper().ToString();
+                for (y = 0; y < actors.Count; y++)
+                {
+                    if (act == name)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        act = actors[y].ActorName.ToUpper();
+                    }
+                }
+            do {
+                    if (act == name && movieId == movies[x].Id.ToString()) {
+                Console.WriteLine("This actor is already in the movie");
+                    i++;
+                    break;
+            }
+            else{
+                    
+                i++;
+                    }
+            var sql = "INSERT INTO Cast (ActorId, MovieId) VALUES (@ActorId, @MovieId)";
             var cmd = new MySqlCommand(sql, cnn);
-
-            Console.WriteLine("Add an actor");
-            cmd.Parameters.AddWithValue("@ActorName", Console.ReadLine());
-
+                    var actorId = actors[y-1].ActorId.ToString();
+            cmd.Parameters.AddWithValue("@ActorId", actorId);
+            cmd.Parameters.AddWithValue("@MovieId", movieId);
+                    cmd.ExecuteNonQuery();
+                    cnn.Close();
+                
+            } while (true);
+            // Annars lägg till relationen mellan filmen och skådespelaren i databasen
             // VAD GÖR VI NUUUU ?? :OOOOO
 
             // Kolla om skådisen redan finns

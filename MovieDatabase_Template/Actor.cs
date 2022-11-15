@@ -10,7 +10,7 @@
     public class Actor
     {
         public int ActorId { get; set; }
-        public string ActorName;
+        public string ActorName { get; set; }
         public int BornYear { get; set; }
     }
 }
