@@ -44,5 +44,8 @@ while (true)
         case ConsoleKey.Escape:
             Environment.Exit(0);
             break;
+        default:
+            Console.WriteLine("try again loser");
+            break;
     }
 }
