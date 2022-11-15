@@ -115,8 +115,8 @@
             // Kolla om relationen finns i databasen, i så fall är du klar
             var actors = GetActors();
             int i = 0;
-            string act = actors[i].ActorName.ToUpper().ToString();
                 int y = 0;
+            string act = actors[y].ActorName.ToUpper().ToString();
                 for (y = 0; y < actors.Count; y++)
                 {
                     if (act == name)
@@ -125,7 +125,7 @@
                     }
                     else
                     {
-                        y++;
+                        act = actors[y].ActorName.ToUpper();
                     }
                 }
             do {
